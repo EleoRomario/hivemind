@@ -14,7 +14,7 @@ export type SidebarItem = {
   label: string;
 };
 
-export const sidebar: SidebarItem[] = [
+export const SIDEBAR: SidebarItem[] = [
   {
     icon: DashboardSquare,
     href: '/',

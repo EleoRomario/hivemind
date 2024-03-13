@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Jost } from 'next/font/google';
 import { Sidebar } from '@/components/modules/sidebar';
 import { Header } from '@/components/modules/header';
 import './globals.css';
 import './layout.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const jost = Jost({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+      <body className={jost.className}>
         <div className="layout bg-bunker-900 text-white">
           <div className="sidebar">
             <Sidebar />
@@ -27,7 +27,7 @@ export default function RootLayout({
           <header className="header">
             <Header />
           </header>
-          <main className="content bg-bunker-950">{children}</main>
+          <main className="content bg-bunker-950 p-5">{children}</main>
           <footer className="footer">footer</footer>
         </div>
       </body>

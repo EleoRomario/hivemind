@@ -1,7 +1,9 @@
+import { MyTasks } from '@/components/modules/dashboard';
+
 export default function Home() {
   return (
-    <div className="p-5">
-      <h1>hola</h1>
+    <div className="grid grid-cols-3">
+      <MyTasks />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 'use client';
-import { SidebarItem, sidebar } from '@/constants/sidebar';
+import { SidebarItem, SIDEBAR } from '@/constants/sidebar';
 import { ArrowRight, LayersLogo } from '@/icons';
 import { useStore } from '@/store/store';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ export default function Sidebar() {
           </button>
         </div>
         <ul className="relative flex w-full flex-1 flex-col gap-6 py-5">
-          {sidebar.map(({ href, icon, label }, index) => (
+          {SIDEBAR.map(({ href, icon, label }, index) => (
             <SidebarItem key={index} href={href} icon={icon} label={label} />
           ))}
         </ul>
