@@ -17,7 +17,7 @@ export type SidebarItem = {
 export const sidebar: SidebarItem[] = [
   {
     icon: DashboardSquare,
-    href: '/dashboard',
+    href: '/',
     label: 'dashboard',
   },
   {
