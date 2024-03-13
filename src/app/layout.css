@@ -1,11 +1,11 @@
 .layout {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
-    'header'
-    'main'
-    'footer';
+    'sidebar header'
+    'sidebar main'
+    'sidebar footer';
   min-height: 100vh;
 }
 .header {
@@ -20,4 +20,7 @@
 }
 .footer {
   grid-area: footer;
+}
+.sidebar {
+  grid-area: sidebar;
 }

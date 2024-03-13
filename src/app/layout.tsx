@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Sidebar } from '@/components/modules/Sidebar';
+import { Header } from '@/components/modules/Header';
 import './globals.css';
 import './layout.css';
 
@@ -20,11 +21,13 @@ export default function RootLayout({
     <html lang="es">
       <body className={inter.className}>
         <div className="layout bg-bunker-900 text-white">
-          <header className="header">{/* <Header /> */}</header>
-          <div className="main-content">
+          <div className="sidebar">
             <Sidebar />
-            <main className="content bg-bunker-950">{children}</main>
           </div>
+          <header className="header">
+            <Header />
+          </header>
+          <main className="content bg-bunker-950">{children}</main>
           <footer className="footer">footer</footer>
         </div>
       </body>
