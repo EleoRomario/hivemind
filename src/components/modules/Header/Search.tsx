@@ -28,7 +28,7 @@ export default function Search() {
   }, [search]);
 
   return (
-    <div className="text-bunker-300 flex w-full items-center gap-4">
+    <div className="flex w-full items-center gap-4 text-bunker-300">
       <SearchIcon className="size-4" />
       <input
         type="text"

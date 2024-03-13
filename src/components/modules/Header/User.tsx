@@ -12,7 +12,7 @@ export default function User() {
       />
       <div className="flex flex-col text-sm">
         <span className="block w-fit truncate">Ana Lorem</span>
-        <span className="text-bunker-500 text-xs">Admin</span>
+        <span className="text-xs text-bunker-500">Admin</span>
       </div>
     </div>
   );
