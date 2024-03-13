@@ -12,6 +12,7 @@ export default function MyTasks() {
         'rounded-xl',
         'bg-bunker-900',
         'py-5',
+        'h-fit',
       )}
     >
       <h2 className={clsx('px-5', 'text-lg')}>My Tasks</h2>
