@@ -1,5 +1,5 @@
 'use client';
-import { SidebarItem, sidebar } from '@/data/sidebar';
+import { SidebarItem, sidebar } from '@/constants/sidebar';
 import { ArrowRight, LayersLogo } from '@/icons';
 import { useStore } from '@/store/store';
 import Link from 'next/link';
