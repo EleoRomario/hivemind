@@ -3,10 +3,11 @@ import { SidebarItem, SIDEBAR } from '@/constants/sidebar';
 import { ArrowRight, LayersLogo } from '@/icons';
 import { useStore } from '@/store/store';
 import Link from 'next/link';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 
 export default function Sidebar() {
   const { expanded, toggleExpanded } = useStore();
-
   return (
     <aside className={`h-screen transition ${expanded ? 'w-64' : 'w-16'}`}>
       <nav className="flex h-full flex-col">
@@ -38,19 +39,37 @@ export function SidebarItem({
   label,
 }: Readonly<SidebarItem>) {
   const { expanded } = useStore();
+  const path = usePathname();
 
   return (
-    <li className="group/link relative flex w-full items-center px-5 py-1">
-      <div className="absolute left-0 h-full w-1 rounded-ee rounded-se  transition group-hover/link:bg-primary"></div>
+    <li
+      className={clsx('group/link relative flex w-full items-center px-5 py-1')}
+    >
+      <div
+        className={clsx(
+          'absolute left-0 h-full w-1 rounded-ee rounded-se transition',
+          { 'group-hover/link:bg-primary': true },
+          { 'bg-primary': path === href },
+        )}
+      ></div>
       <Link
         href={href}
-        className="flex w-full min-w-6 flex-row items-center gap-4 text-sm font-medium capitalize text-bunker-300 transition group-hover/link:text-primary"
+        className={clsx(
+          'flex w-full min-w-6 flex-row items-center gap-4 text-sm font-medium capitalize text-bunker-300 transition',
+          { 'group-hover/link:text-primary': true },
+          { 'text-primary': path === href },
+        )}
       >
         <Icon className="block size-6" />
         {expanded && <span>{label}</span>}
       </Link>
       {!expanded && (
-        <div className="absolute left-full z-20 w-28 scale-0 truncate rounded-xl bg-bunker-900 px-2 py-1 capitalize text-primary transition group-hover/link:scale-100">
+        <div
+          className={clsx(
+            'absolute left-full z-20 w-28 scale-0 truncate rounded-xl bg-bunker-900 px-2 py-1 capitalize text-primary transition',
+            { 'group-hover/link:scale-100': true },
+          )}
+        >
           <span>{label}</span>
         </div>
       )}

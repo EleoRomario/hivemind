@@ -70,6 +70,7 @@ export default function Calendar() {
                   'text-xs',
                   'text-white',
                   'flex items-center justify-center',
+                  'transition',
                   day === dayCurrent && isDayCurrent() && 'bg-primary',
                 )}
               >
