@@ -1,4 +1,18 @@
-export const DashboardSquare = (props: React.SVGProps<SVGSVGElement>) => (
+export {
+  DashboardSquare,
+  LayersLogo,
+  ArrowRight,
+  Note,
+  Folder,
+  Calendar,
+  Message,
+  UserMultiple,
+  Settings,
+  Search,
+  Cancel,
+};
+
+const DashboardSquare = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -31,7 +45,7 @@ export const DashboardSquare = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const LayersLogo = (props: React.SVGProps<SVGSVGElement>) => (
+const LayersLogo = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -64,7 +78,7 @@ export const LayersLogo = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export const ArrowRight = (props: React.SVGProps<SVGSVGElement>) => (
+const ArrowRight = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -83,7 +97,7 @@ export const ArrowRight = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export const Note = (props: React.SVGProps<SVGSVGElement>) => (
+const Note = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -135,7 +149,7 @@ export const Note = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export const Folder = (props: React.SVGProps<SVGSVGElement>) => (
+const Folder = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -153,7 +167,7 @@ export const Folder = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export const Calendar = (props: React.SVGProps<SVGSVGElement>) => (
+const Calendar = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -200,7 +214,7 @@ export const Calendar = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export const Message = (props: React.SVGProps<SVGSVGElement>) => (
+const Message = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -225,7 +239,7 @@ export const Message = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export const UserMultiple = (props: React.SVGProps<SVGSVGElement>) => (
+const UserMultiple = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -262,7 +276,7 @@ export const UserMultiple = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-export const Settings = (props: React.SVGProps<SVGSVGElement>) => (
+const Settings = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -282,6 +296,51 @@ export const Settings = (props: React.SVGProps<SVGSVGElement>) => (
       d="M15.5195 12C15.5195 13.933 13.9525 15.5 12.0195 15.5C10.0865 15.5 8.51953 13.933 8.51953 12C8.51953 10.067 10.0865 8.5 12.0195 8.5C13.9525 8.5 15.5195 10.067 15.5195 12Z"
       stroke="currentColor"
       strokeWidth="1.5"
+    />
+  </svg>
+);
+
+const Search = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={24}
+    height={24}
+    color={'currentColor'}
+    fill={'none'}
+    {...props}
+  >
+    <path
+      d="M17.5 17.5L22 22"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M20 11C20 6.02944 15.9706 2 11 2C6.02944 2 2 6.02944 2 11C2 15.9706 6.02944 20 11 20C15.9706 20 20 15.9706 20 11Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+const Cancel = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    width={24}
+    height={24}
+    color={'currentColor'}
+    fill={'none'}
+    {...props}
+  >
+    <path
+      d="M19 5L5 19M5 5L19 19"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );
