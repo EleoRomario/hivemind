@@ -1,12 +1,11 @@
 export type Id = string | number;
-export type Card = Project;
-export type ActiveCard = Card & { columnId: Id };
+export type ActiveCard = Task & { columnId: Id };
 export type Column = {
   id: Id;
   title: string;
 };
 
-export type Project = {
+export type Task = {
   id: number;
   columnId: Id;
   title: string;

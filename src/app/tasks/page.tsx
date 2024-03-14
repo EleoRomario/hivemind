@@ -1,10 +1,10 @@
 'use client';
 
 import ColumnContainer from '@/components/interface/ColumnContainer';
-import { CardProject } from '@/components/modules/projects';
+import { TaskCard } from '@/components/modules/tasks';
 import { COLUMNS } from '@/constants/columns';
-import { PROJECTS } from '@/constants/projects';
-import { Column, Id, Project } from '@/types/types';
+import { TASKS } from '@/constants/tasks';
+import { Column, Id, Task } from '@/types/types';
 import { generateId } from '@/utils/generateId';
 import {
   DndContext,
@@ -21,15 +21,15 @@ import { Plus } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 
-export default function PageProjects() {
+export default function PageTasks() {
   const [columns, setColumns] = useState<Column[]>(COLUMNS);
   const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
 
-  const [tasks, setTasks] = useState<Project[]>(PROJECTS);
+  const [tasks, setTasks] = useState<Task[]>(TASKS);
 
   const [activeColumn, setActiveColumn] = useState<Column | null>(null);
 
-  const [activeTask, setActiveTask] = useState<Project | null>(null);
+  const [activeTask, setActiveTask] = useState<Task | null>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -93,7 +93,7 @@ export default function PageProjects() {
               />
             )}
             {activeTask && (
-              <CardProject
+              <TaskCard
                 task={activeTask}
                 deleteTask={deleteTask}
                 updateTask={updateTask}
@@ -107,7 +107,7 @@ export default function PageProjects() {
   );
 
   function createTask(columnId: Id) {
-    const newTask: Project = {
+    const newTask: Task = {
       id: generateId(),
       columnId,
       title: `Task ${tasks.length + 1}`,

@@ -1,6 +1,7 @@
-export const useScrollToBottom = (ref: React.RefObject<HTMLElement>) => {
-  const toBottom = () => {
+export const useScrollToBottom = () => {
+  const toBottom = (ref: React.RefObject<HTMLElement>) => {
     if (ref.current) {
+      console.log('toBottom');
       ref.current.scrollTop = ref.current.scrollHeight;
     }
   };

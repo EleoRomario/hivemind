@@ -1,93 +1,49 @@
-export type TaskProps = {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-};
+import { Task } from '@/types/types';
 
-export const TASKS: TaskProps[] = [
+export const TASKS: Task[] = [
   {
-    id: '1',
+    id: 1,
+    columnId: 'todo',
     title: 'Create a new project',
-    description: 'Create a new project and add tasks',
-    completed: true,
   },
   {
-    id: '2',
+    id: 2,
+    columnId: 'todo',
     title: 'Create a new task',
-    description: 'Create a new task and assign it to a member',
-    completed: true,
   },
   {
-    id: '3',
+    id: 3,
+    columnId: 'doing',
     title: 'Assign a task to a member',
-    description: 'Assign a task to a member and set a due date',
-    completed: false,
   },
   {
-    id: '4',
+    id: 4,
+    columnId: 'done',
     title: 'Complete a task',
-    description: 'Mark a task as completed and add a comment',
-    completed: false,
   },
   {
-    id: '5',
+    id: 5,
+    columnId: 'done',
     title: 'View a project',
-    description: 'View a project and its tasks and members',
-    completed: false,
   },
   {
-    id: '6',
+    id: 6,
+    columnId: 'done',
     title: 'View a member',
-    description: 'View a member and their tasks and projects',
-    completed: false,
   },
   {
-    id: '7',
+    id: 7,
+    columnId: 'done',
     title: 'View a task',
-    description: 'View a task and its details and comments',
-    completed: false,
   },
   {
-    id: '8',
+    id: 8,
+    columnId: 'done',
     title: 'View a comment',
-    description: 'View a comment and its details and replies',
-    completed: false,
   },
   {
-    id: '9',
+    id: 9,
+    columnId: 'done',
     title: 'View a project',
-    description: 'View a project and its tasks and members',
-    completed: false,
-  },
-  {
-    id: '10',
-    title: 'View a member',
-    description: 'View a member and their tasks and projects',
-    completed: false,
-  },
-  {
-    id: '11',
-    title: 'View a task',
-    description: 'View a task and its details and comments',
-    completed: false,
-  },
-  {
-    id: '12',
-    title: 'View a comment',
-    description: 'View a comment and its details and replies',
-    completed: true,
-  },
-  {
-    id: '13',
-    title: 'View a project',
-    description: 'View a project and its tasks and members',
-    completed: true,
-  },
-  {
-    id: '14',
-    title: 'View a member',
-    description: 'View a member and their tasks and projects',
-    completed: false,
   },
 ];

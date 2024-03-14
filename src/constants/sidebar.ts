@@ -21,7 +21,7 @@ export const SIDEBAR: SidebarItem[] = [
   },
   {
     icon: ClipboardList,
-    href: '/my-tasks',
+    href: '/tasks',
     label: 'my tasks',
   },
   {

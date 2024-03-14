@@ -1,13 +1,12 @@
 'use client';
-import { Column, Id, Project } from '@/types/types';
+import { Column, Id, Task } from '@/types/types';
 import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Plus } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { CardProject } from '../modules/projects';
-import { ButtonAdd, ButtonOptions } from '../buttons';
-import ButtonAddCard from '../buttons/ButtonAddCard';
+import { ButtonAdd, ButtonOptions, ButtonAddCard } from '@/components/buttons';
 import { useScrollToBottom } from '@/hooks/useScrollToBottom';
+import { TaskCard } from '@/components/modules/tasks';
 
 interface Props {
   column: Column;
@@ -17,7 +16,7 @@ interface Props {
   createTask: (columnId: Id) => void;
   updateTask: (id: Id, content: string) => void;
   deleteTask: (id: Id) => void;
-  tasks: Project[];
+  tasks: Task[];
 }
 
 export default function ColumnContainer({
@@ -30,12 +29,17 @@ export default function ColumnContainer({
   updateTask,
 }: Props) {
   const [editMode, setEditMode] = useState(false);
+  const [isAddingTask, setIsAddingTask] = useState(false);
 
   const columnRef = useRef(null);
-  const { toBottom } = useScrollToBottom(columnRef);
+  const { toBottom } = useScrollToBottom();
+
   useEffect(() => {
-    toBottom();
-  }, [tasks, toBottom]);
+    if (isAddingTask) {
+      toBottom(columnRef);
+      setIsAddingTask(false);
+    }
+  }, [isAddingTask, columnRef, toBottom]);
 
   const tasksIds = useMemo(() => {
     return tasks.map((task) => task.id);
@@ -131,7 +135,7 @@ export default function ColumnContainer({
       >
         <SortableContext items={tasksIds}>
           {tasks.map((task) => (
-            <CardProject
+            <TaskCard
               key={task.id}
               task={task}
               deleteTask={deleteTask}
@@ -142,7 +146,10 @@ export default function ColumnContainer({
         {/* Column footer */}
         <ButtonAddCard
           label="Add task"
-          onClick={() => createTask(column.id)}
+          onClick={() => {
+            createTask(column.id);
+            setIsAddingTask(true);
+          }}
           icon={<Plus />}
         />
       </div>
