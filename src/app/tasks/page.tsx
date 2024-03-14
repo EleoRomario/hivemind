@@ -4,6 +4,7 @@ import ColumnContainer from '@/components/interface/ColumnContainer';
 import { TaskCard } from '@/components/modules/tasks';
 import { COLUMNS } from '@/constants/columns';
 import { TASKS } from '@/constants/tasks';
+import { useScroll } from '@/hooks/useScroll';
 import { Column, Id, Task } from '@/types/types';
 import { generateId } from '@/utils/generateId';
 import {
@@ -18,7 +19,7 @@ import {
 } from '@dnd-kit/core';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { Plus } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export default function PageTasks() {
@@ -31,6 +32,18 @@ export default function PageTasks() {
 
   const [activeTask, setActiveTask] = useState<Task | null>(null);
 
+  const columnRef = useRef(null);
+  const { toRight } = useScroll();
+
+  const [isAddingColumn, setIsAddingColumn] = useState(false);
+
+  useEffect(() => {
+    if (isAddingColumn) {
+      toRight(columnRef);
+      setIsAddingColumn(false);
+    }
+  }, [isAddingColumn, columnRef, toRight]);
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -40,7 +53,10 @@ export default function PageTasks() {
   );
 
   return (
-    <div className="flex h-full w-full items-start justify-end overflow-x-auto overflow-y-hidden p-6">
+    <div
+      ref={columnRef}
+      className="flex h-full items-start overflow-x-auto overflow-y-hidden p-6"
+    >
       <DndContext
         sensors={sensors}
         onDragStart={onDragStart}
@@ -67,6 +83,7 @@ export default function PageTasks() {
           <div
             onClick={() => {
               createNewColumn();
+              setIsAddingColumn(true);
             }}
             className="group/new-col flex w-56 flex-col gap-2 hover:cursor-pointer"
           >

@@ -5,7 +5,7 @@ import { CSS } from '@dnd-kit/utilities';
 import { Plus } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ButtonAdd, ButtonOptions, ButtonAddCard } from '@/components/buttons';
-import { useScrollToBottom } from '@/hooks/useScrollToBottom';
+import { useScroll } from '@/hooks/useScroll';
 import { TaskCard } from '@/components/modules/tasks';
 
 interface Props {
@@ -32,7 +32,7 @@ export default function ColumnContainer({
   const [isAddingTask, setIsAddingTask] = useState(false);
 
   const columnRef = useRef(null);
-  const { toBottom } = useScrollToBottom();
+  const { toBottom } = useScroll();
 
   useEffect(() => {
     if (isAddingTask) {
