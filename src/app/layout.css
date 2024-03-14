@@ -6,7 +6,7 @@
     'sidebar header'
     'sidebar main'
     'sidebar footer';
-  min-height: 100vh;
+  height: 100vh;
 }
 .header {
   grid-area: header;

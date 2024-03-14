@@ -27,7 +27,9 @@ export default function RootLayout({
           <header className="header">
             <Header />
           </header>
-          <main className="content bg-bunker-950 p-5">{children}</main>
+          <main className="content overflow-auto bg-bunker-950">
+            {children}
+          </main>
           <footer className="footer">footer</footer>
         </div>
       </body>

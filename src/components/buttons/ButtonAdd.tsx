@@ -1,9 +1,23 @@
 import { Plus } from 'lucide-react';
+import { ButtonIcon } from '.';
 
-export default function ButtonAdd() {
+type Props = {
+  onClick: () => void;
+  label: string;
+  orientation?: 'top' | 'bottom' | 'left' | 'right';
+};
+
+export default function ButtonAdd({
+  onClick,
+  label,
+  orientation = 'top',
+}: Props) {
   return (
-    <button className="flex size-7 items-center justify-center rounded-lg bg-primary transition hover:bg-primary/90">
-      <Plus />
-    </button>
+    <ButtonIcon
+      onClick={onClick}
+      icon={<Plus />}
+      label={label}
+      orientation={orientation}
+    />
   );
 }
