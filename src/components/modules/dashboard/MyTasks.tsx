@@ -1,6 +1,6 @@
 import { TASKS, TaskProps } from '@/constants/tasks';
-import { CheckMarkCircle } from '@/icons';
 import clsx from 'clsx';
+import { CircleCheck } from 'lucide-react';
 
 export default function MyTasks() {
   return (
@@ -42,7 +42,7 @@ export default function MyTasks() {
               </p>
               <div className={clsx('w-5')}>
                 {completed ? (
-                  <CheckMarkCircle className={clsx('size-5', 'text-primary')} />
+                  <CircleCheck className={clsx('size-5', 'text-primary')} />
                 ) : (
                   <div
                     className={clsx(

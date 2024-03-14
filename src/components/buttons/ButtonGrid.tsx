@@ -1,9 +1,9 @@
-import { DashboardSquare } from '@/icons';
+import { LayoutGrid } from 'lucide-react';
 
 export default function ButtonGrid() {
   return (
-    <button className="rounded-xl bg-bunker-800 p-2 hover:opacity-70">
-      <DashboardSquare />
+    <button className=" flex size-7 items-center justify-center rounded-lg bg-bunker-800 hover:opacity-70">
+      <LayoutGrid className="size-4" />
     </button>
   );
 }

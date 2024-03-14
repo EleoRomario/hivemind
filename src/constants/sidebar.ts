@@ -1,12 +1,11 @@
 import {
-  Calendar,
-  DashboardSquare,
+  CalendarDays,
+  ClipboardList,
   Folder,
-  Message,
-  Note,
+  LayoutGrid,
+  MessageCircleMore,
   Settings,
-  UserMultiple,
-} from '@/icons';
+} from 'lucide-react';
 
 export type SidebarItem = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -16,12 +15,12 @@ export type SidebarItem = {
 
 export const SIDEBAR: SidebarItem[] = [
   {
-    icon: DashboardSquare,
+    icon: LayoutGrid,
     href: '/',
     label: 'dashboard',
   },
   {
-    icon: Note,
+    icon: ClipboardList,
     href: '/my-tasks',
     label: 'my tasks',
   },
@@ -31,23 +30,23 @@ export const SIDEBAR: SidebarItem[] = [
     label: 'projects',
   },
   {
-    icon: Calendar,
+    icon: CalendarDays,
     href: '/calendar',
     label: 'calendar',
   },
   {
-    icon: Message,
+    icon: MessageCircleMore,
     href: '/messages',
     label: 'messages',
-  },
-  {
-    icon: UserMultiple,
-    href: '/members',
-    label: 'members',
   },
   {
     icon: Settings,
     href: '/settings',
     label: 'settings',
   },
+  // {
+  //   icon: ,
+  //   href: '/members',
+  //   label: 'members',
+  // },
 ];

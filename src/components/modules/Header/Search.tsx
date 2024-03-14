@@ -1,6 +1,6 @@
 'use client';
-import { Cancel, Search as SearchIcon } from '@/icons';
 import { useEffect, useState } from 'react';
+import { Search as SearchI, X } from 'lucide-react';
 export default function Search() {
   const [search, setSearch] = useState('' as string);
 
@@ -29,7 +29,7 @@ export default function Search() {
 
   return (
     <div className="flex w-full items-center gap-4 text-bunker-300">
-      <SearchIcon className="size-4" />
+      <SearchI className="size-4" />
       <input
         type="text"
         placeholder="Search"
@@ -39,7 +39,7 @@ export default function Search() {
       />
       {isEmpty && (
         <button onClick={deleteInput} className="focus:outline-none">
-          <Cancel className="size-4" />
+          <X className="size-4" />
         </button>
       )}
     </div>

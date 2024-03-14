@@ -1,10 +1,10 @@
 'use client';
 import { SidebarItem, SIDEBAR } from '@/constants/sidebar';
-import { ArrowRight, LayersLogo } from '@/icons';
 import { useStore } from '@/store/store';
 import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
+import { ChevronRight, Layers3 } from 'lucide-react';
 
 export default function Sidebar() {
   const { expanded, toggleExpanded } = useStore();
@@ -13,14 +13,16 @@ export default function Sidebar() {
       <nav className="flex h-full flex-col">
         <div className="relative flex h-16 items-center justify-center border-r border-bunker-950">
           <div className="flex gap-2">
-            <LayersLogo />
+            <Layers3 />
             {expanded && <span className="font-extrabold">HiveMind</span>}
           </div>
           <button
             className="absolute -right-3 flex size-6 items-center justify-center rounded-lg bg-bunker-600 text-white"
             onClick={toggleExpanded}
           >
-            <ArrowRight className={`${expanded && 'rotate-180'} transition`} />
+            <ChevronRight
+              className={`${expanded && 'rotate-180'} transition`}
+            />
           </button>
         </div>
         <ul className="relative flex w-full flex-1 flex-col gap-6 py-5">

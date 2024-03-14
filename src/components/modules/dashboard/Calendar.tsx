@@ -1,7 +1,7 @@
 'use client';
 import useCalendar from '@/hooks/useCalendar';
-import { ArrowRight } from '@/icons';
 import clsx from 'clsx';
+import { ChevronRight } from 'lucide-react';
 
 export default function Calendar() {
   const {
@@ -34,13 +34,13 @@ export default function Calendar() {
             className="size-6 rounded-full bg-primary transition hover:scale-105"
             onClick={prevMonth}
           >
-            <ArrowRight className="rotate-180 transform" />
+            <ChevronRight className="rotate-180 transform" />
           </button>
           <button
             className="size-6 rounded-full bg-primary transition hover:scale-105"
             onClick={nextMonth}
           >
-            <ArrowRight />
+            <ChevronRight />
           </button>
         </div>
       </div>

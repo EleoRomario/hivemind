@@ -1,9 +1,9 @@
-import { PlusSign } from '@/icons';
+import { Plus } from 'lucide-react';
 
 export default function ButtonAdd() {
   return (
-    <button className="rounded-xl bg-primary p-2 transition hover:bg-primary/90">
-      <PlusSign />
+    <button className="flex size-7 items-center justify-center rounded-lg bg-primary transition hover:bg-primary/90">
+      <Plus />
     </button>
   );
 }
