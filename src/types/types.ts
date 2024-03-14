@@ -9,4 +9,6 @@ export type Task = {
   id: number;
   columnId: Id;
   title: string;
+  date?: string;
+  description?: string;
 };

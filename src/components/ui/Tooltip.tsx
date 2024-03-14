@@ -15,7 +15,7 @@ export default function Tooltip({
       <div className="peer/tooltip relative">{children}</div>
       <div
         className={clsx(
-          'absolute scale-0 truncate rounded-lg bg-bunker-700 px-2 py-1 text-xs font-light transition peer-hover/tooltip:scale-100',
+          'absolute scale-0 truncate rounded-lg bg-bunker-700 px-2 py-1 text-xs font-light text-white transition peer-hover/tooltip:scale-100',
           {
             'bottom-full left-1/2 mb-1 -translate-x-1/2 transform':
               orientation === 'top',
