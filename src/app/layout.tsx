@@ -6,6 +6,7 @@ import '@/styles/globals.css';
 import '@/styles/layout.css';
 import '@/styles/utilities.css';
 import Toast from '@/components/common/Toast';
+import Footer from '@/components/modules/footer/Footer';
 
 const jost = Jost({ subsets: ['latin'] });
 
@@ -33,7 +34,9 @@ export default function RootLayout({
           <main className="content overflow-auto bg-bunker-950">
             {children}
           </main>
-          <footer className="footer">footer</footer>
+          <footer className="footer">
+            <Footer />
+          </footer>
         </div>
       </body>
     </html>
