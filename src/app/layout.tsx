@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Jost } from 'next/font/google';
 import { Sidebar } from '@/components/modules/sidebar';
 import { Header } from '@/components/modules/header';
-import './globals.css';
-import './layout.css';
+import '@/styles/globals.css';
+import '@/styles/layout.css';
+import '@/styles/utilities.css';
 
 const jost = Jost({ subsets: ['latin'] });
 

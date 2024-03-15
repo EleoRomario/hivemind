@@ -7,6 +7,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { ButtonAdd, ButtonOptions, ButtonAddCard } from '@/components/buttons';
 import { useScroll } from '@/hooks/useScroll';
 import { TaskCard } from '@/components/modules/tasks';
+import clsx from 'clsx';
 
 interface Props {
   column: Column;
@@ -80,23 +81,38 @@ export default function ColumnContainer({
     <div
       ref={setNodeRef}
       style={style}
-      className="flex h-full w-56 flex-col rounded-lg"
+      className="flex h-full w-56 flex-col gap-2 rounded-lg"
     >
       <div
         {...attributes}
         {...listeners}
-        className="flex h-10 cursor-grab items-center justify-between p-3 text-sm"
+        className="grid h-10 w-full cursor-grab grid-cols-[1fr_auto] items-center justify-between p-3 text-sm"
       >
         <div
-          className="flex justify-center gap-2 font-medium"
+          className="flex w-full items-center justify-start gap-2 truncate font-medium"
           onClick={() => {
             setEditMode(true);
           }}
         >
-          {!editMode && column.title}
+          {!editMode && (
+            <div className="flex w-full items-center gap-2">
+              <span className="truncate">{column.title}</span>
+              <span
+                className={clsx(
+                  'flex size-5 min-w-5 items-center justify-center rounded-full  text-xs font-semibold ',
+                  { 'bg-orange-600/20 text-orange-700': column.id === 'todo' },
+                  { 'bg-yellow-600/20 text-yellow-700': column.id === 'doing' },
+                  { 'bg-green-600/20 text-green-700': column.id === 'done' },
+                )}
+              >
+                {tasks.length}
+              </span>
+            </div>
+          )}
+
           {editMode && (
             <input
-              className="rounded border bg-bunker-950 px-2 outline-none focus:border-bunker-500"
+              className="w-full rounded border bg-bunker-950 px-2 outline-none focus:border-bunker-500"
               value={column.title}
               onChange={(e) => updateColumn(column.id, e.target.value)}
               autoFocus
@@ -110,7 +126,7 @@ export default function ColumnContainer({
             />
           )}
         </div>
-        <div className="flex gap-2">
+        <div className="flex w-fit gap-2">
           <ButtonAdd
             onClick={() => {
               createTask(column.id);
@@ -131,7 +147,13 @@ export default function ColumnContainer({
       {/* Column cards container */}
       <div
         ref={columnRef}
-        className="flex flex-grow flex-col justify-items-end gap-4 overflow-y-auto overflow-x-hidden p-2"
+        className={clsx(
+          'no-scrollbar flex flex-grow flex-col justify-items-end gap-4 overflow-y-auto overflow-x-hidden rounded-lg px-2 pt-2',
+          {
+            'bg-gradient-to-t from-transparent to-bunker-900/20':
+              tasks.length === 0,
+          },
+        )}
       >
         <SortableContext items={tasksIds}>
           {tasks.map((task) => (
@@ -145,6 +167,7 @@ export default function ColumnContainer({
         </SortableContext>
         {/* Column footer */}
         <ButtonAddCard
+          className="sticky bottom-0"
           label="Add task"
           onClick={() => {
             createTask(column.id);

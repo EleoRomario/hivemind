@@ -91,7 +91,7 @@ export default function PageTasks() {
               <Plus />
               Add Column
             </div>
-            <div className="flex-1 rounded-lg bg-gradient-to-t from-transparent to-bunker-900/50 transition group-hover/new-col:bg-bunker-800"></div>
+            <div className="flex-1 rounded-lg bg-gradient-to-t from-transparent to-bunker-900/20 transition group-hover/new-col:bg-bunker-800"></div>
           </div>
         </div>
         {createPortal(

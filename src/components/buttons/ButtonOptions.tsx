@@ -52,14 +52,20 @@ export default function ButtonOptions({ onEdit, onDelete }: Props) {
         )}
       >
         <button
-          onClick={onEdit}
+          onClick={() => {
+            onEdit();
+            handleOpenMenu();
+          }}
           className="flex items-center gap-2 truncate px-4 py-2 text-bunker-100 hover:bg-bunker-600 hover:text-bunker-50"
         >
           <Pencil className="size-4 stroke-1" />
           Edit section
         </button>
         <button
-          onClick={onDelete}
+          onClick={() => {
+            onDelete();
+            handleOpenMenu();
+          }}
           className="flex items-center gap-2 truncate px-4 py-2 text-bunker-100 hover:bg-bunker-600 hover:text-bunker-50"
         >
           <Trash className="size-4 stroke-1" />
