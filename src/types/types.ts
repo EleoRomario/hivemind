@@ -4,6 +4,11 @@ export type Column = {
   id: Id;
   title: string;
 };
+export type Comment = {
+  id: number;
+  taskId: Id;
+  text: string;
+};
 
 export type Task = {
   id: number;
@@ -12,4 +17,5 @@ export type Task = {
   date?: string;
   image?: string;
   description?: string;
+  comments?: Comment[];
 };

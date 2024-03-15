@@ -8,6 +8,18 @@ export const TASKS: Task[] = [
     title: 'non quam. Pellentesque habitant',
     image: '/images/avatar.webp',
     description: 'convallis erat, eget tincidunt dui',
+    comments: [
+      {
+        id: 1,
+        taskId: 1,
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      },
+      {
+        id: 2,
+        taskId: 1,
+        text: 'Pellentesque habitant morbi tristique sen ectus et netus et malesuada fames ac turpis egestas.',
+      },
+    ],
   },
   {
     id: 2,

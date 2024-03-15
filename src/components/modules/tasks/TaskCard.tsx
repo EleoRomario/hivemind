@@ -4,7 +4,7 @@ import { Id, Task } from '@/types/types';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import clsx from 'clsx';
-import { Clock, Trash } from 'lucide-react';
+import { Clock, MessageSquareMore, Trash } from 'lucide-react';
 import Image from 'next/image';
 
 type Props = {
@@ -91,6 +91,12 @@ const CardContent = ({ task, className, deleteTask }: Card) => {
           className="h-20 w-full rounded-lg object-cover"
         />
       )}
+      <div className="flex w-full justify-between">
+        <div className="flex items-center gap-2 text-xs text-bunker-600">
+          <MessageSquareMore className="size-4 stroke-1" />
+          {task.comments?.length || 0}
+        </div>
+      </div>
     </div>
   );
 };
