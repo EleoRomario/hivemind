@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 import { ChevronRight, Layers3 } from 'lucide-react';
 
-export function Sidebar() {
+export default function Sidebar() {
   const { expanded, toggleExpanded } = useStore();
   return (
     <aside className={`h-screen transition ${expanded ? 'w-64' : 'w-16'}`}>
