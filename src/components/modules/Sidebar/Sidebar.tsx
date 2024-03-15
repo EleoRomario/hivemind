@@ -1,5 +1,5 @@
 'use client';
-import { SidebarItem, SIDEBAR } from '@/constants/sidebar';
+import { SideItem, SIDEBAR } from '@/constants/sidebar';
 import { useStore } from '@/store/store';
 import Link from 'next/link';
 import clsx from 'clsx';
@@ -35,7 +35,7 @@ export function Sidebar() {
   );
 }
 
-function SidebarItem({ icon: Icon, href, label }: Readonly<SidebarItem>) {
+function SidebarItem({ icon: Icon, href, label }: Readonly<SideItem>) {
   const { expanded } = useStore();
   const path = usePathname();
 

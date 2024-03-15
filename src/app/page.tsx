@@ -20,7 +20,6 @@ import {
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { Plus } from 'lucide-react';
 import { startTransition, useEffect, useMemo, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
 
 export default function PageTasks() {
   const [isNewColumn, setIsNewColumn] = useState(false);
@@ -97,33 +96,28 @@ export default function PageTasks() {
             <div className="flex-1 rounded-lg bg-gradient-to-t from-transparent to-bunker-900/20 transition group-hover/new-col:bg-bunker-900/50"></div>
           </div>
         </div>
-        {createPortal(
-          <DragOverlay>
-            {activeColumn && (
-              <ColumnContainer
-                column={activeColumn}
-                deleteColumn={deleteColumn}
-                updateColumn={updateColumn}
-                createTask={createTask}
-                deleteTask={deleteTask}
-                updateTask={updateTask}
-                tasks={tasks.filter(
-                  (task) => task.columnId === activeColumn.id,
-                )}
-                isNewColumn={isNewColumn}
-                setIsNewColumn={setIsNewColumn}
-              />
-            )}
-            {activeTask && (
-              <TaskCard
-                task={activeTask}
-                deleteTask={deleteTask}
-                updateTask={updateTask}
-              />
-            )}
-          </DragOverlay>,
-          document.body,
-        )}
+        <DragOverlay>
+          {activeColumn && (
+            <ColumnContainer
+              column={activeColumn}
+              deleteColumn={deleteColumn}
+              updateColumn={updateColumn}
+              createTask={createTask}
+              deleteTask={deleteTask}
+              updateTask={updateTask}
+              tasks={tasks.filter((task) => task.columnId === activeColumn.id)}
+              isNewColumn={isNewColumn}
+              setIsNewColumn={setIsNewColumn}
+            />
+          )}
+          {activeTask && (
+            <TaskCard
+              task={activeTask}
+              deleteTask={deleteTask}
+              updateTask={updateTask}
+            />
+          )}
+        </DragOverlay>
       </DndContext>
     </div>
   );
@@ -210,8 +204,6 @@ export default function PageTasks() {
 
     const isActiveAColumn = active.data.current?.type === 'Column';
     if (!isActiveAColumn) return;
-
-    console.log('DRAG END');
 
     setColumns((columns) => {
       const activeColumnIndex = columns.findIndex((col) => col.id === activeId);

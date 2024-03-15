@@ -1,12 +1,12 @@
 import { ClipboardList } from 'lucide-react';
 
-export type SidebarItem = {
+export type SideItem = {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   href: string;
   label: string;
 };
 
-export const SIDEBAR: SidebarItem[] = [
+export const SIDEBAR: SideItem[] = [
   // {
   //   icon: LayoutGrid,
   //   href: '/',
