@@ -5,8 +5,8 @@ import '@/styles/layout.css';
 import '@/styles/utilities.css';
 import Toast from '@/components/common/Toast';
 import Footer from '@/components/modules/footer/Footer';
-import { Sidebar } from '@/components/modules/sidebar/Sidebar';
-import { Header } from '@/components/modules/header/Header';
+import { Sidebar } from '../components/modules/sidebar/Sidebar';
+import { Header } from '../components/modules/header/Header';
 
 const jost = Jost({ subsets: ['latin'] });
 
