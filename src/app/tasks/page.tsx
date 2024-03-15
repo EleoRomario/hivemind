@@ -148,10 +148,10 @@ export default function PageTasks() {
     setTasks(newTasks);
   }
 
-  function updateTask(id: Id, content: string) {
+  function updateTask(id: Id, title: string) {
     const newTasks = tasks.map((task) => {
       if (task.id !== id) return task;
-      return { ...task, content };
+      return { ...task, title };
     });
 
     setTasks(newTasks);

@@ -18,4 +18,8 @@ export type Task = {
   image?: string;
   description?: string;
   comments?: Comment[];
+  assignedBy?: {
+    name: string;
+    photo: string;
+  };
 };
