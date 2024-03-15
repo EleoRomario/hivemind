@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import { Jost } from 'next/font/google';
-import { Sidebar } from '@/components/modules/sidebar';
-import { Header } from '@/components/modules/header';
 import '@/styles/globals.css';
 import '@/styles/layout.css';
 import '@/styles/utilities.css';
 import Toast from '@/components/common/Toast';
 import Footer from '@/components/modules/footer/Footer';
+import Sidebar from '@/components/modules/sidebar/Sidebar';
+import Header from '@/components/modules/header/Header';
 
 const jost = Jost({ subsets: ['latin'] });
 

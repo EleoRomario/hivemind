@@ -1,4 +1,5 @@
-import { Search, User } from '@/components/modules/header';
+import Search from './Search';
+import User from './User';
 
 export default function Header() {
   return (
