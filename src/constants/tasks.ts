@@ -6,6 +6,7 @@ export const TASKS: Task[] = [
     columnId: 'todo',
     date: 'Jun 26, 2023',
     title: 'non quam. Pellentesque habitant',
+    image: '/images/avatar.webp',
     description: 'convallis erat, eget tincidunt dui',
   },
   {
@@ -13,6 +14,7 @@ export const TASKS: Task[] = [
     columnId: 'todo',
     date: 'Sep 30, 2024',
     title: 'Suspendisse commodo tincidunt nibh.',
+    image: '/images/avatar.webp',
     description: 'nec luctus felis purus ac',
   },
   {

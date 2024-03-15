@@ -19,7 +19,7 @@ import {
 } from '@dnd-kit/core';
 import { SortableContext, arrayMove } from '@dnd-kit/sortable';
 import { Plus } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { startTransition, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 export default function PageTasks() {
@@ -127,6 +127,11 @@ export default function PageTasks() {
     const newTask: Task = {
       id: generateId(),
       columnId,
+      date: new Date().toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+      }),
       title: `Task ${tasks.length + 1}`,
     };
 
@@ -225,32 +230,33 @@ export default function PageTasks() {
 
     if (!isActiveATask) return;
 
-    // Im dropping a Task over another Task
     if (isActiveATask && isOverATask) {
-      setTasks((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
-        const overIndex = tasks.findIndex((t) => t.id === overId);
+      startTransition(() => {
+        setTasks((tasks) => {
+          const activeIndex = tasks.findIndex((t) => t.id === activeId);
+          const overIndex = tasks.findIndex((t) => t.id === overId);
 
-        if (tasks[activeIndex].columnId != tasks[overIndex].columnId) {
-          // Fix introduced after video recording
-          tasks[activeIndex].columnId = tasks[overIndex].columnId;
-          return arrayMove(tasks, activeIndex, overIndex - 1);
-        }
+          if (tasks[activeIndex].columnId != tasks[overIndex].columnId) {
+            tasks[activeIndex].columnId = tasks[overIndex].columnId;
+            return arrayMove(tasks, activeIndex, overIndex - 1);
+          }
 
-        return arrayMove(tasks, activeIndex, overIndex);
+          return arrayMove(tasks, activeIndex, overIndex);
+        });
       });
     }
 
     const isOverAColumn = over.data.current?.type === 'Column';
 
-    // Im dropping a Task over a column
     if (isActiveATask && isOverAColumn) {
-      setTasks((tasks) => {
-        const activeIndex = tasks.findIndex((t) => t.id === activeId);
+      startTransition(() => {
+        setTasks((tasks) => {
+          const activeIndex = tasks.findIndex((t) => t.id === activeId);
 
-        tasks[activeIndex].columnId = overId;
-        console.log('DROPPING TASK OVER COLUMN', { activeIndex });
-        return arrayMove(tasks, activeIndex, activeIndex);
+          tasks[activeIndex].columnId = overId;
+          // console.log('DROPPING TASK OVER COLUMN', { activeIndex });
+          return arrayMove(tasks, activeIndex, activeIndex);
+        });
       });
     }
   }
