@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Search as SearchI, X } from 'lucide-react';
-export default function Search() {
+export function Search() {
   const [search, setSearch] = useState('' as string);
 
   // TODO: Implement handleSearch
