@@ -5,6 +5,7 @@ import { Header } from '@/components/modules/header';
 import '@/styles/globals.css';
 import '@/styles/layout.css';
 import '@/styles/utilities.css';
+import Toast from '@/components/common/Toast';
 
 const jost = Jost({ subsets: ['latin'] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={jost.className}>
+        <Toast />
         <div className="layout bg-bunker-900 text-white">
           <div className="sidebar">
             <Sidebar />

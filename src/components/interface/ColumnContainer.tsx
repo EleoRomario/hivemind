@@ -8,6 +8,7 @@ import { ButtonAdd, ButtonOptions, ButtonAddCard } from '@/components/buttons';
 import { useScroll } from '@/hooks/useScroll';
 import { TaskCard } from '@/components/modules/tasks';
 import clsx from 'clsx';
+import { toast } from 'sonner';
 
 interface Props {
   column: Column;
@@ -77,6 +78,16 @@ export default function ColumnContainer({
     );
   }
 
+  const onDelete = () => {
+    console.log('tasks', tasks);
+    if (tasks.length > 0) {
+      return toast.error('Delete tasks first');
+    }
+
+    deleteColumn(column.id);
+    toast.success('Column deleted');
+  };
+
   return (
     <div
       ref={setNodeRef}
@@ -137,9 +148,7 @@ export default function ColumnContainer({
             onEdit={() => {
               setEditMode(true);
             }}
-            onDelete={() => {
-              deleteColumn(column.id);
-            }}
+            onDelete={onDelete}
           />
         </div>
       </div>

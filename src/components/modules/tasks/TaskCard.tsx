@@ -6,6 +6,7 @@ import { CSS } from '@dnd-kit/utilities';
 import clsx from 'clsx';
 import { Clock, MessageSquareMore, Trash } from 'lucide-react';
 import Image from 'next/image';
+import { toast } from 'sonner';
 
 type Props = {
   task: Task;
@@ -73,7 +74,10 @@ const CardContent = ({ task, className, deleteTask }: Card) => {
           {task.date}
         </span>
         <ButtonIcon
-          onClick={() => deleteTask(task.id)}
+          onClick={() => {
+            deleteTask(task.id);
+            toast.success('Task deleted');
+          }}
           icon={<Trash className="size-4 stroke-1" />}
           label="Delete Task"
           orientation="left"
