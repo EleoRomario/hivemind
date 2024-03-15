@@ -3,7 +3,7 @@ import { Column, Id, Task } from '@/types/types';
 import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Plus } from 'lucide-react';
-import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { ButtonAdd, ButtonOptions, ButtonAddCard } from '@/components/buttons';
 import { useScroll } from '@/hooks/useScroll';
 import { TaskCard } from '@/components/modules/tasks';
