@@ -3,7 +3,7 @@ import { Column, Id, Task } from '@/types/types';
 import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { Plus } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { ButtonAdd, ButtonOptions, ButtonAddCard } from '@/components/buttons';
 import { useScroll } from '@/hooks/useScroll';
 import { TaskCard } from '@/components/modules/tasks';
@@ -19,6 +19,9 @@ interface Props {
   updateTask: (id: Id, content: string) => void;
   deleteTask: (id: Id) => void;
   tasks: Task[];
+
+  isNewColumn?: boolean;
+  setIsNewColumn: (value: boolean) => void;
 }
 
 export default function ColumnContainer({
@@ -29,8 +32,10 @@ export default function ColumnContainer({
   tasks,
   deleteTask,
   updateTask,
+  isNewColumn,
+  setIsNewColumn,
 }: Props) {
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState(isNewColumn);
   const [isAddingTask, setIsAddingTask] = useState(false);
 
   const columnRef = useRef(null);
@@ -40,8 +45,9 @@ export default function ColumnContainer({
     if (isAddingTask) {
       toBottom(columnRef);
       setIsAddingTask(false);
+      setIsNewColumn(false);
     }
-  }, [isAddingTask, columnRef, toBottom]);
+  }, [isAddingTask, columnRef, toBottom, setIsNewColumn]);
 
   const tasksIds = useMemo(() => {
     return tasks.map((task) => task.id);
@@ -73,15 +79,14 @@ export default function ColumnContainer({
       <div
         ref={setNodeRef}
         style={style}
-        className=" flex h-[500px] max-h-[500px] w-[350px] flex-col rounded-md border-2 border-pink-500 bg-red-600 opacity-40 "
+        className="flex h-full w-56 flex-col gap-2 rounded-lg border border-dashed border-bunker-900 bg-bunker-900/20"
       ></div>
     );
   }
 
   const onDelete = () => {
-    console.log('tasks', tasks);
     if (tasks.length > 0) {
-      return toast.error('Delete tasks first');
+      return toast.warning('Delete tasks first');
     }
 
     deleteColumn(column.id);
@@ -92,12 +97,14 @@ export default function ColumnContainer({
     <div
       ref={setNodeRef}
       style={style}
-      className="flex h-full w-56 flex-col gap-2 rounded-lg"
+      className={clsx(
+        'flex h-full w-56 flex-col gap-2 rounded-lg  border border-bunker-900/20 bg-bunker-900/10  hover:border-bunker-900/10 hover:bg-bunker-950',
+      )}
     >
       <div
         {...attributes}
         {...listeners}
-        className="grid h-10 w-full cursor-grab grid-cols-[1fr_auto] items-center justify-between p-3 text-sm"
+        className="grid h-10 w-full cursor-grab grid-cols-[1fr_auto] items-center justify-between p-3 text-sm text-white"
       >
         <div
           className="flex w-full items-center justify-start gap-2 truncate font-medium"
@@ -127,11 +134,20 @@ export default function ColumnContainer({
               value={column.title}
               onChange={(e) => updateColumn(column.id, e.target.value)}
               autoFocus
-              onBlur={() => {
+              onBlur={(e) => {
+                if (e.target.value === '') {
+                  setEditMode(true);
+                  onDelete();
+                  return;
+                }
                 setEditMode(false);
               }}
               onKeyDown={(e) => {
                 if (e.key !== 'Enter') return;
+                if (column.title === '') {
+                  setEditMode(true);
+                  return toast.warning('Title cannot be empty');
+                }
                 setEditMode(false);
               }}
             />
