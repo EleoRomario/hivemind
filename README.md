@@ -5,7 +5,7 @@ HIVEMIND es una demo de un sistema para el manejo de tareas que se enfoca princi
 
 ## Demo
 
-[URL HiveMind](http://hivemind.vercel.com)
+[URL HiveMind](https://hivemind-psi.vercel.app/)
 
 ## Tecnologias
 
